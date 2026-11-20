@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Fixed
 
+- HTTP worker crashed after every request with `laravel/octane` 2.24+: `OctaneWorker::boot()` did not capture the boot request that Octane restores into the container once a request is handled.
 - `RoadRunnerQueue::push()` and `later()` may return `null` when Laravel defers job dispatch until the database transaction commits.
 - Check pipeline stats on message push [#147]
 - Edit the $ttl calculation for the RoadRunnerStore, the time calculation takes place inside the spiral/roadrunner-kv package

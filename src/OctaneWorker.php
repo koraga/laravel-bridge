@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Spiral\RoadRunnerLaravel;
 
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Laravel\Octane\ApplicationFactory;
 use Laravel\Octane\Contracts\Client;
 use Laravel\Octane\Events\WorkerStarting;
@@ -34,6 +35,11 @@ final class OctaneWorker extends Worker
                 [Client::class => $this->client],
             ),
         );
+
+        // Octane puts this request back into the container after every handled request.
+        if ($app->bound('request')) {
+            $this->bootRequest = $app->make(Request::class);
+        }
 
         $this->dispatchEvent($app, new WorkerStarting($app));
     }

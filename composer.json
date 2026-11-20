@@ -38,7 +38,7 @@
     "require": {
         "php": "^8.2",
         "internal/dload": "^1.1",
-        "laravel/octane": "^2.9",
+        "laravel/octane": "^2.24",
         "roadrunner/app-logger": "^1.3.1",
         "roadrunner/goridge": "^4.6",
         "roadrunner/grpc": "^3.8.1",
